@@ -17,5 +17,5 @@ Algorithm:
 7. send these scores through email
 
 Log:
- - Reimplemented the image interface - now QGImage
+ - Reimplemented the image interface and class - now QGImage
  -

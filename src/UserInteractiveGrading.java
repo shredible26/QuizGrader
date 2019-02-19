@@ -13,7 +13,10 @@ public class UserInteractiveGrading {
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
 
-
+    /**
+     * @throws InterruptedException
+     * @throws IOException
+     */
     public void run() throws InterruptedException, IOException {
 
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
@@ -27,6 +30,11 @@ public class UserInteractiveGrading {
         System.exit(0);
     }
 
+    /**
+     * @return
+     * @throws InterruptedException
+     * @throws IOException
+     */
     private HashMap<String, ArrayList<AnswerField>> loadAllAnswerFields() throws InterruptedException, IOException {
 
         HashMap<String, ArrayList<AnswerField>> answers = new HashMap<>();
@@ -54,6 +62,12 @@ public class UserInteractiveGrading {
         return answers;
     }
 
+    /**
+     * @param page
+     * @param problemNum
+     * @return
+     * @throws InterruptedException
+     */
     private AnswerField recordAnswerField(QGImage page, int problemNum) throws InterruptedException {
 
         //AnswerField where we append mouse locations
@@ -87,6 +101,9 @@ public class UserInteractiveGrading {
         return field;
     }
 
+    /**
+     * @return
+     */
     private int[] getLocationOfMouse() {
         int mouseX = MouseInfo.getPointerInfo().getLocation().x;
         int mouseY = MouseInfo.getPointerInfo().getLocation().y;
