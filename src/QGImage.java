@@ -12,13 +12,27 @@ public class QGImage implements MouseListener {
     private boolean isPressed;
 
     private JFrame frame; //for the mouse listener
+    private JFrame rectangle; //rectangle view finder
     private BufferedImage image; //contents of the image
+
+    private int width;
+    private int height;
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     public QGImage(String name) {
         try {
             this.frame = new JFrame();
             this.image = ImageIO.read(new File(name));
             frame.addMouseListener(this);
+            width = image.getWidth();
+            height = image.getHeight();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,6 +45,8 @@ public class QGImage implements MouseListener {
         this.frame = new JFrame();
         this.image = image;
         frame.addMouseListener(this);
+        width = image.getWidth();
+        height = image.getHeight();
     }
 
     /**
@@ -40,7 +56,7 @@ public class QGImage implements MouseListener {
      * @param endY
      */
     public void drawRectangleAt(int startX, int startY, int endX, int endY) {
-        JFrame rectangle = new JFrame();
+        rectangle = new JFrame();
         rectangle.setLocation(new Point(startX, startY));
         rectangle.setSize(endX - startX, endY - startY);
         rectangle.getContentPane().setBackground(Color.GRAY);
@@ -84,6 +100,18 @@ public class QGImage implements MouseListener {
         frame.getContentPane().add(new JLabel(new ImageIcon(image)));
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public void close() {
+        frame.setVisible(false);
+    }
+
+    public void closeRectangleView() {
+        rectangle.setVisible(false);
+    }
+
+    public void setPosition(Point p) {
+        frame.setLocation(p);
     }
 
     // --- Mouse Listener Interface Methods ---

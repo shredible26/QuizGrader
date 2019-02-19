@@ -10,9 +10,23 @@ public class UserInteractiveGrading {
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
 
+    private final int scaleWidth = 500;
+    private final int scaleHeight = 750;
+
     public void run() throws InterruptedException, IOException {
 
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
+
+        for (int i = 1; i <= numOfProblems; i++) {
+            String page = getPageForNum(i);
+            AnswerField ans = getAnswerFieldForNum(i);
+            for (File student : new File(Constants.StudentResponsePath).listFiles()) {
+                QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
+                image.resize(scaleHeight, scaleWidth);
+                image.getRegion(ans).display();
+            }
+            JOptionPane.showInputDialog("Go to the next question?");
+        }
 
         Thread.sleep(100000);
         System.exit(0);
@@ -34,7 +48,7 @@ public class UserInteractiveGrading {
             answers.put(page.getName(), new ArrayList<>());
 
             QGImage pageImage = new QGImage(Constants.imagePath + "AllPagesOfBlankTest" + Constants.separator + page.getName());
-            pageImage.resize(750, 500);
+            pageImage.resize(scaleHeight, scaleWidth);
             pageImage.display();
 
             int numOfAnswerFields = Integer.parseInt(JOptionPane.showInputDialog("How many answer fields on this page?"));
@@ -43,6 +57,8 @@ public class UserInteractiveGrading {
                 num++;
                 answers.get(page.getName()).add(recordAnswerField(pageImage, num));
             }
+
+            pageImage.close();
         }
 
         Thread.sleep(1000);
@@ -85,6 +101,8 @@ public class UserInteractiveGrading {
         field.setProblemNum(problemNum);
 
         page.drawRectangleAt(field.getTopX(), field.getTopY(), field.getBottomX(), field.getBottomY());
+        Thread.sleep(100);
+        page.closeRectangleView();
 
         return field;
     }
