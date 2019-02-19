@@ -49,6 +49,7 @@ public class UserInteractiveGrading {
             }
         }
 
+        Thread.sleep(1000);
         numOfProblems = num;
         return answers;
     }
@@ -73,15 +74,16 @@ public class UserInteractiveGrading {
             continue;
         }
 
-        field.setHeight(Math.abs(field.getTopY() - field.getBottomY()));
-        field.setWidth(Math.abs(field.getTopX() - field.getBottomX()));
-
-        page.drawRectangleAt(field.getTopX(), field.getTopY(), field.getBottomX(), field.getBottomY());
-
         field.setBottomX(getLocationOfMouse()[0]);
         field.setBottomY(getLocationOfMouse()[1]);
 
+        field.setHeight(Math.abs(field.getTopY() - field.getBottomY()));
+        field.setWidth(Math.abs(field.getTopX() - field.getBottomX()));
+
         field.setProblemNum(problemNum);
+
+        page.drawRectangleAt(field.getTopX(), field.getTopY(), field.getBottomX(), field.getBottomY());
+
         return field;
     }
 

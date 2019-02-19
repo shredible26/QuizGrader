@@ -39,7 +39,6 @@ public class QGImage implements MouseListener {
         rectangle.setVisible(true);
     }
 
-
     public QGImage getRegion(AnswerField a) {
 
         BufferedImage section = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
