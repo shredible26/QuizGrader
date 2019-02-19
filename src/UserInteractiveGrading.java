@@ -73,9 +73,10 @@ public class UserInteractiveGrading {
             continue;
         }
 
-        page.drawRectangleAt(field.getTopX(), field.getTopY(), field.getBottomX(), field.getBottomY());
         field.setHeight(Math.abs(field.getTopY() - field.getBottomY()));
         field.setWidth(Math.abs(field.getTopX() - field.getBottomX()));
+
+        page.drawRectangleAt(field.getTopX(), field.getTopY(), field.getBottomX(), field.getBottomY());
 
         field.setBottomX(getLocationOfMouse()[0]);
         field.setBottomY(getLocationOfMouse()[1]);

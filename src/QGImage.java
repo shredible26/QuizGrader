@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 
@@ -28,6 +29,17 @@ public class QGImage implements MouseListener {
         this.image = image;
     }
 
+    public void drawRectangleAt(int startX, int startY, int endX, int endY) {
+        JFrame rectangle = new JFrame();
+        rectangle.setLocation(new Point(startX, startY));
+        rectangle.setSize(endX - startX, endY - startY);
+        rectangle.getContentPane().setBackground(Color.GRAY);
+        rectangle.getRootPane().putClientProperty("Window.alpha", new Float(0.3f));
+        rectangle.setUndecorated(true);
+        rectangle.setVisible(true);
+    }
+
+
     public QGImage getRegion(AnswerField a) {
 
         BufferedImage section = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -48,17 +60,6 @@ public class QGImage implements MouseListener {
         g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
         image = dimg;
-    }
-
-    //TODO: fix
-    public void drawRectangleAt(int startX, int startY, int endX, int endY) {
-        JFrame rectangle = new JFrame();
-        rectangle.setLocation(new Point(startX, startY));
-        rectangle.setSize(endX - startX, endY - startY);
-        rectangle.getContentPane().setBackground(Color.GRAY);
-        rectangle.getRootPane().putClientProperty("Window.alpha", new Float(0.3f));
-        rectangle.setUndecorated(true);
-        rectangle.setVisible(true);
     }
 
     public void display() {
