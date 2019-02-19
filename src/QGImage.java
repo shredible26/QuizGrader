@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 
@@ -29,7 +28,9 @@ public class QGImage implements MouseListener {
      * @param image
      */
     public QGImage(BufferedImage image) {
+        this.frame = new JFrame();
         this.image = image;
+        frame.addMouseListener(this);
     }
 
     /**
@@ -56,7 +57,7 @@ public class QGImage implements MouseListener {
 
         BufferedImage section = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
 
-        for (int r = a.getTopY(); r > a.getBottomY(); r--) {
+        for (int r = a.getTopY(); r < a.getBottomY(); r++) {
             for (int c = a.getTopX(); c < a.getBottomX(); c++) {
                 section.setRGB(c - a.getTopX(), r - a.getTopY(), image.getRGB(c, r));
             }

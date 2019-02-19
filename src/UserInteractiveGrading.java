@@ -9,35 +9,16 @@ public class UserInteractiveGrading {
 
     private final String separator = File.separator;
     private final String imagePath = "src" + separator + "ScannedImageSources" + separator;
+    private final String StudentResponsePath = imagePath + "StudentResponses";
 
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
-
-
-    /**
-     * Algorithm:
-     * 1. display blank test //done
-     * 2. User goes through test and drags boxes on the parts where there will be answers //done
-     * 3. for every question:
-     *      loop through all the responses, display them side by side
-     *      each should have two input boxes under them: 1 for displaying sentence comments,
-     *      the other for typing a relative score for that problem
-     * 4. record all data to associated students
-     * 5. generate a class summary with all comments and general scores (which questions did people get wrong the most
-     * 6. generate student summary, with comments and scores
-     * 7. send these scores through email
-     */
 
     public void run() throws InterruptedException, IOException {
 
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
 
-        for (String file : ANSWER_FIELDS.keySet()) {
-            for (AnswerField ans : ANSWER_FIELDS.get(file)) {
-                System.out.println(ans);
-            }
-        }
-
+        Thread.sleep(100000);
         System.exit(0);
     }
 
@@ -112,17 +93,6 @@ public class UserInteractiveGrading {
         return field;
     }
 
-    private String pageForNumber(int number) {
-        for (String page : ANSWER_FIELDS.keySet()) {
-            for (AnswerField ans : ANSWER_FIELDS.get(page)) {
-                if (ans.getProblemNum() == number) {
-                    return page;
-                }
-            }
-        }
-        return null;
-    }
-
     /**
      * @return
      */
@@ -130,6 +100,28 @@ public class UserInteractiveGrading {
         int mouseX = MouseInfo.getPointerInfo().getLocation().x;
         int mouseY = MouseInfo.getPointerInfo().getLocation().y;
         return new int[]{mouseX, mouseY};
+    }
+
+    private String getPageForNum(int num) {
+        for (String page : ANSWER_FIELDS.keySet()) {
+            for (AnswerField ans : ANSWER_FIELDS.get(page)) {
+                if (ans.getProblemNum() == num) {
+                    return page;
+                }
+            }
+        }
+        return null;
+    }
+
+    private AnswerField getAnswerFieldForNum(int num) {
+        for (String page : ANSWER_FIELDS.keySet()) {
+            for (AnswerField ans : ANSWER_FIELDS.get(page)) {
+                if (ans.getProblemNum() == num) {
+                    return ans;
+                }
+            }
+        }
+        return null;
     }
 
 }
