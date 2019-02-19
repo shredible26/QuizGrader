@@ -7,10 +7,6 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
-    private final String separator = File.separator;
-    private final String imagePath = "src" + separator + "ScannedImageSources" + separator;
-    private final String StudentResponsePath = imagePath + "StudentResponses";
-
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
 
@@ -30,14 +26,14 @@ public class UserInteractiveGrading {
     private HashMap<String, ArrayList<AnswerField>> loadAllAnswerFields() throws InterruptedException, IOException {
 
         HashMap<String, ArrayList<AnswerField>> answers = new HashMap<>();
-        File[] blankTest = new File(imagePath + "AllPagesOfBlankTest" + separator).listFiles();
+        File[] blankTest = new File(Constants.imagePath + "AllPagesOfBlankTest" + Constants.separator).listFiles();
 
         int num = 0;
         for (File page : blankTest) {
 
             answers.put(page.getName(), new ArrayList<>());
 
-            QGImage pageImage = new QGImage(imagePath + "AllPagesOfBlankTest" + separator + page.getName());
+            QGImage pageImage = new QGImage(Constants.imagePath + "AllPagesOfBlankTest" + Constants.separator + page.getName());
             pageImage.resize(750, 500);
             pageImage.display();
 
