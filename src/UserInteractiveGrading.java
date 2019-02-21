@@ -10,8 +10,8 @@ public class UserInteractiveGrading {
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
 
-    private final int scaleWidth = 500;
-    private final int scaleHeight = 750;
+    private final int scaleWidth = 500; //scale all images to this width
+    private final int scaleHeight = 750; //scale all images to this height
 
     public void run() throws InterruptedException, IOException {
 
@@ -20,14 +20,13 @@ public class UserInteractiveGrading {
         for (int i = 1; i <= numOfProblems; i++) {
             String page = getPageForNum(i);
             AnswerField ans = getAnswerFieldForNum(i);
-            for (File student : new File(Constants.StudentResponsePath).listFiles()) {
+            for (File student : new File(Constants.StudentResponsePath).listFiles()) { //student will be the name of the student
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
-                image.getRegion(ans).display();
+                Canvas canvas = new Canvas(image.getRegion(ans));
+                canvas.showInputDialog();
             }
-            JOptionPane.showInputDialog("Go to the next question?");
         }
-
         Thread.sleep(100000);
         System.exit(0);
     }

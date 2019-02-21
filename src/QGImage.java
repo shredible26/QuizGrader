@@ -82,6 +82,10 @@ public class QGImage implements MouseListener {
         return new QGImage(section);
     }
 
+    public ImageIcon getIcon() {
+        return new ImageIcon(image);
+    }
+
     /**
      * @param newH
      * @param newW
