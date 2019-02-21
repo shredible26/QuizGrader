@@ -86,6 +86,10 @@ public class QGImage implements MouseListener {
         return new ImageIcon(image);
     }
 
+    public BufferedImage getImage() {
+        return this.image;
+    }
+
     /**
      * @param newH
      * @param newW
@@ -139,8 +143,6 @@ public class QGImage implements MouseListener {
     public boolean mouseIsPressed() {
         return isPressed;
     }
-
-
 }
 
 

@@ -8,12 +8,15 @@ import java.util.HashMap;
 public class UserInteractiveGrading {
 
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
+    private ArrayList<String> labels = new ArrayList<>();
     private int numOfProblems;
 
     private final int scaleWidth = 500; //scale all images to this width
     private final int scaleHeight = 750; //scale all images to this height
 
     public void run() throws InterruptedException, IOException {
+
+        setup();
 
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
 
@@ -23,8 +26,11 @@ public class UserInteractiveGrading {
             for (File student : new File(Constants.StudentResponsePath).listFiles()) { //student will be the name of the student
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
-                Canvas canvas = new Canvas(image.getRegion(ans));
-                canvas.showInputDialog();
+                Canvas canvas = new Canvas(image.getRegion(ans), student.getName());
+                for (String label : labels) { //will be used for the dropdown menu
+                    canvas.addLabel(label);
+                }
+                canvas.display();
             }
         }
         Thread.sleep(100000);
@@ -135,6 +141,12 @@ public class UserInteractiveGrading {
             }
         }
         return null;
+    }
+
+    private void setup() {
+        labels.add("off by one");
+        labels.add("index out of bounds");
+        labels.add("null pointer");
     }
 
 }
