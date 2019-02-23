@@ -2,24 +2,26 @@ import javax.swing.*;
 
 public class Canvas {
 
-    private JPanel panel;
     private JFrame frame;
+    private JPanel panel;
+
+    private JTextField textField;
 
     private QGImage image;
-    private JTextField textField;
-    private DropDownMenu menu;
 
     public Canvas(QGImage image, String name) {
+        frame = new JFrame(name);
+        panel = new JPanel();
+
+        textField = new JTextField("Custom Labels");
 
         this.image = image;
-        this.textField = new JTextField();
-        this.menu = new DropDownMenu();
 
-        this.frame = new JFrame(name);
-        this.panel = new JPanel();
+        JLabel imageLabel = new JLabel(image.getIcon(), JLabel.CENTER);
 
-        panel.add(new JLabel(image.getIcon()));
+        panel.add(imageLabel);
         panel.add(textField);
+
     }
 
     public void addLabel(String label) {
