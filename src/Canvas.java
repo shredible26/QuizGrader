@@ -1,35 +1,31 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Canvas {
+    private JComboBox menu;
+    private JButton submit;
+    private JTextField labels;
+    private JTextField score;
+    private JLabel image;
+    private JPanel mainPanel;
 
-    private JFrame frame;
-    private JPanel panel;
+    public Canvas() {
 
-    private JTextField textField;
-
-    private QGImage image;
-
-    public Canvas(QGImage image, String name) {
-        frame = new JFrame(name);
-        panel = new JPanel();
-
-        textField = new JTextField("Custom Labels");
-
-        this.image = image;
-
-        JLabel imageLabel = new JLabel(image.getIcon(), JLabel.CENTER);
-
-        panel.add(imageLabel);
-        panel.add(textField);
-
+        submit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showInputDialog(labels.getText());
+            }
+        });
     }
 
-    public void addLabel(String label) {
+    public void setImage(QGImage image) {
+        this.image = new JLabel(image.getIcon());
+        this.image.setVisible(true);
     }
 
-    public void display() {
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 }
