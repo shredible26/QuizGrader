@@ -26,7 +26,7 @@ public class UserInteractiveGrading {
             for (File student : new File(Constants.StudentResponsePath).listFiles()) { //student will be the name of the student
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
-                CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image);
+                CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans));
                 container.display();
             }
         }

@@ -8,46 +8,51 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="3b37a" class="javax.swing.JComboBox" binding="menu">
+      <component id="cc53e" class="javax.swing.JLabel" binding="imageLabel" custom-create="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="52281" class="javax.swing.JComboBox" binding="menu">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
-      </component>
-      <component id="5e773" class="javax.swing.JButton" binding="submit">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
         <properties>
-          <text value="Submit"/>
+          <model>
+            <item value=""/>
+            <item value="Off by one"/>
+            <item value="Null pointer"/>
+            <item value="Stackoverflow"/>
+          </model>
         </properties>
       </component>
-      <component id="54f41" class="javax.swing.JTextField" binding="labels">
+      <component id="e0066" class="javax.swing.JTextField" binding="customTags">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Custom labels"/>
+          <text value=""/>
         </properties>
       </component>
-      <component id="55582" class="javax.swing.JTextField" binding="score">
+      <component id="2ebce" class="javax.swing.JTextField" binding="score">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value="Score"/>
-        </properties>
+        <properties/>
       </component>
-      <component id="b3b8f" class="javax.swing.JLabel" binding="image">
+      <component id="33555" class="javax.swing.JButton" binding="Submit">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Image"/>
+          <text value="Submit"/>
         </properties>
       </component>
     </children>

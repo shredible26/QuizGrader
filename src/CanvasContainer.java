@@ -2,10 +2,15 @@ import javax.swing.*;
 
 public class CanvasContainer {
     public JFrame frame;
+    public Canvas canvas;
 
     public CanvasContainer(String name, QGImage image) {
+
         frame = new JFrame(name);
-        frame.setContentPane(new Canvas().getMainPanel());
+        this.canvas = new Canvas(image);
+
+        frame.setContentPane(canvas.getMainPanel());
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
     }
