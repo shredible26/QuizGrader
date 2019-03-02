@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class CanvasContainer {
     public JFrame frame;
@@ -7,7 +8,7 @@ public class CanvasContainer {
     public CanvasContainer(String name, QGImage image) {
 
         frame = new JFrame(name);
-        this.canvas = new Canvas(image);
+        this.canvas = new Canvas(image, name);
 
         frame.setContentPane(canvas.getMainPanel());
 
@@ -17,5 +18,9 @@ public class CanvasContainer {
 
     public void display() {
         frame.setVisible(true);
+    }
+
+    public void setLocation(int x, int y) {
+        frame.setLocation(new Point(x, y));
     }
 }

@@ -8,15 +8,15 @@ import java.util.HashMap;
 public class UserInteractiveGrading {
 
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
-    private ArrayList<String> labels = new ArrayList<>();
     private int numOfProblems;
 
     private final int scaleWidth = 500; //scale all images to this width
     private final int scaleHeight = 750; //scale all images to this height
 
-    public void run() throws InterruptedException, IOException {
+    public HashMap<String, HashMap<Integer, ArrayList<String>>> tags;
+    public HashMap<String, ArrayList<Score>> scores;
 
-        setup();
+    public void run() throws InterruptedException, IOException {
 
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
 
@@ -139,11 +139,4 @@ public class UserInteractiveGrading {
         }
         return null;
     }
-
-    private void setup() {
-        labels.add("off by one");
-        labels.add("index out of bounds");
-        labels.add("null pointer");
-    }
-
 }

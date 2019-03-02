@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Canvas {
     private JPanel mainPanel;
@@ -11,16 +12,27 @@ public class Canvas {
     private JButton Submit;
 
     QGImage image;
-    String tags;
+    ArrayList<String> tags;
 
-    public Canvas(QGImage image) {
+    public Canvas(QGImage image, String name) {
 
         this.image = image;
+        this.tags = new ArrayList<>();
+
         Submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tags = customTags.getText();
-                System.out.println(tags);
+                String[] customTagsCollected = customTags.getText().split(", ");
+                for (String label : customTagsCollected) {
+                    tags.add(label);
+                }
+            }
+        });
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (customTags.getText().equals("")) customTags.setText(menu.getSelectedItem().toString());
+                else customTags.setText(customTags.getText() + ", " + menu.getSelectedItem().toString());
             }
         });
     }
