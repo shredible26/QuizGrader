@@ -11,8 +11,9 @@ public class Canvas {
     private JTextField score;
     private JButton Submit;
 
-    QGImage image;
-    ArrayList<String> tags;
+    private QGImage image;
+    private ArrayList<String> tags;
+    private Score scoreObject;
 
     public Canvas(QGImage image) {
 
@@ -26,6 +27,7 @@ public class Canvas {
                 for (String label : customTagsCollected) {
                     tags.add(label);
                 }
+                scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
             }
         });
         menu.addActionListener(new ActionListener() {
@@ -37,11 +39,20 @@ public class Canvas {
         });
     }
 
+    private void createUIComponents() {
+        this.imageLabel = new JLabel(image.getIcon());
+    }
+
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    private void createUIComponents() {
-        this.imageLabel = new JLabel(image.getIcon());
+    public ArrayList<String> getTags() {
+        return tags;
     }
+
+    public Score getScoreObject() {
+        return scoreObject;
+    }
+
 }

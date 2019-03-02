@@ -13,11 +13,13 @@ public class UserInteractiveGrading {
     private final int scaleWidth = 500; //scale all images to this width
     private final int scaleHeight = 750; //scale all images to this height
 
-    public HashMap<String, HashMap<Integer, ArrayList<String>>> tags;
-    public HashMap<String, ArrayList<Score>> scores;
+    private HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
+    private HashMap<String, ArrayList<Score>> scores = new HashMap<>();
+    private ArrayList<CanvasContainer> canvi = new ArrayList<>();
 
     public void run() throws InterruptedException, IOException {
 
+        System.out.println();
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
 
         for (int i = 1; i <= numOfProblems; i++) {
@@ -28,8 +30,10 @@ public class UserInteractiveGrading {
                 image.resize(scaleHeight, scaleWidth);
                 CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans));
                 container.display();
+                canvi.add(container);
             }
         }
+
         Thread.sleep(100000);
         System.exit(0);
     }
@@ -138,5 +142,12 @@ public class UserInteractiveGrading {
             }
         }
         return null;
+    }
+
+    private void setup() {
+        for (File student : new File(Constants.StudentResponsePath).listFiles()) {
+            tags.put(student.getName(), new HashMap<>());
+            scores.put(student.getName(), new ArrayList<>());
+        }
     }
 }

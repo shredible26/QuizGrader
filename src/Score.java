@@ -37,4 +37,9 @@ public class Score {
     public void setPercent(double percent) {
         this.percent = percent;
     }
+
+    @Override
+    public String toString() {
+        return earned + "/" + possible;
+    }
 }
