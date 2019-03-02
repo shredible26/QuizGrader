@@ -7,19 +7,25 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
+    private final int screenWidth = 0;
+    private final int screenHeight = 0;
+
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
 
     private final int scaleWidth = 500; //scale all images to this width
     private final int scaleHeight = 750; //scale all images to this height
 
-    private HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
-    private HashMap<String, ArrayList<Score>> scores = new HashMap<>();
+    public static HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
+    public static HashMap<String, HashMap<Integer, Score>> scores = new HashMap<>();
 
     public void run() throws InterruptedException, IOException {
 
         System.out.println();
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
+
+        int newX = 0;
+        int newY = 0;
 
         for (int i = 1; i <= numOfProblems; i++) {
             String page = getPageForNum(i);
@@ -28,6 +34,7 @@ public class UserInteractiveGrading {
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
                 CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans));
+                container.setLocation(newX, newY);
                 container.display();
             }
         }

@@ -18,7 +18,7 @@ public class Canvas {
     private ArrayList<String> tags;
     private Score scoreObject;
 
-    public Canvas(QGImage image) {
+    public Canvas(QGImage image, String name, int problemNum) {
 
         this.image = image;
         this.tags = new ArrayList<>();
@@ -35,6 +35,10 @@ public class Canvas {
                 }
                 scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
                 frame.setVisible(false);
+                for (String tag : tags) {
+                    UserInteractiveGrading.tags.get(name).get(problemNum).add(tag);
+                }
+                UserInteractiveGrading.scores.get(name).put(problemNum, scoreObject);
             }
         });
         menu.addActionListener(new ActionListener() {
