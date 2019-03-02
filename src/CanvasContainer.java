@@ -3,12 +3,12 @@ import java.awt.*;
 
 public class CanvasContainer {
     public JFrame frame;
-    public Canvas canvas;
+    public Canvas canvas; //is static, cannot reference nonstatic perspectives
 
     public CanvasContainer(String name, QGImage image) {
 
         frame = new JFrame(name);
-        this.canvas = new Canvas(image, name);
+        this.canvas = new Canvas(image);
 
         frame.setContentPane(canvas.getMainPanel());
 

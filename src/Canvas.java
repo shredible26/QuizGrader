@@ -14,7 +14,7 @@ public class Canvas {
     QGImage image;
     ArrayList<String> tags;
 
-    public Canvas(QGImage image, String name) {
+    public Canvas(QGImage image) {
 
         this.image = image;
         this.tags = new ArrayList<>();
