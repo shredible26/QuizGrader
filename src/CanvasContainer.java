@@ -3,14 +3,18 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class CanvasContainer {
+
     private JFrame frame;
     private Canvas canvas; //is static, cannot reference nonstatic perspectives
     private ArrayList<String> tags;
     private Score score;
 
-    public CanvasContainer(String name, QGImage image) {
+    private int width;
+    private int height;
 
-        this.canvas = new Canvas(image);
+    public CanvasContainer(String name, QGImage image, int problemNum) {
+
+        this.canvas = new Canvas(image, name, problemNum);
         frame = canvas.getFrame();
         frame.setName(name);
 
@@ -21,6 +25,9 @@ public class CanvasContainer {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+
+        width = frame.getWidth();
+        height = frame.getHeight();
     }
 
     public void display() {
@@ -37,5 +44,13 @@ public class CanvasContainer {
 
     public Score getScore() {
         return score;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
-    private final int screenWidth = 0;
-    private final int screenHeight = 0;
+    private final double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    private final double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     private HashMap<String, ArrayList<AnswerField>> ANSWER_FIELDS;
     private int numOfProblems;
@@ -28,14 +28,30 @@ public class UserInteractiveGrading {
         int newY = 0;
 
         for (int i = 1; i <= numOfProblems; i++) {
+
             String page = getPageForNum(i);
             AnswerField ans = getAnswerFieldForNum(i);
+
             for (File student : new File(Constants.StudentResponsePath).listFiles()) { //student will be the name of the student
+
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
-                CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans));
+                CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans), ans.getProblemNum());
+
+                if (newX + container.getWidth() > screenWidth) {
+                    newX = 0;
+                }
+                if (newX == 0) {
+                    newY += container.getHeight();
+                }
+                if (newY + container.getHeight() > screenHeight) {
+                    newY = 0;
+                }
+
                 container.setLocation(newX, newY);
                 container.display();
+
+                newX += container.getWidth();
             }
         }
         Thread.sleep(100000);
@@ -151,7 +167,7 @@ public class UserInteractiveGrading {
     private void setup() {
         for (File student : new File(Constants.StudentResponsePath).listFiles()) {
             tags.put(student.getName(), new HashMap<>());
-            scores.put(student.getName(), new ArrayList<>());
+            scores.put(student.getName(), new HashMap<>());
         }
     }
 }
