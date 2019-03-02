@@ -15,7 +15,6 @@ public class UserInteractiveGrading {
 
     private HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
     private HashMap<String, ArrayList<Score>> scores = new HashMap<>();
-    private ArrayList<CanvasContainer> canvi = new ArrayList<>();
 
     public void run() throws InterruptedException, IOException {
 
@@ -30,10 +29,8 @@ public class UserInteractiveGrading {
                 image.resize(scaleHeight, scaleWidth);
                 CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans));
                 container.display();
-                canvi.add(container);
             }
         }
-
         Thread.sleep(100000);
         System.exit(0);
     }

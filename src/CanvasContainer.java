@@ -10,8 +10,8 @@ public class CanvasContainer {
 
     public CanvasContainer(String name, QGImage image) {
 
-        frame = new JFrame(name);
         this.canvas = new Canvas(image);
+        frame = canvas.getFrame();
 
         tags = canvas.getTags();
         score = canvas.getScoreObject();

@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Canvas {
+
+    private JFrame frame;
+
     private JPanel mainPanel;
     private JLabel imageLabel;
     private JComboBox menu;
@@ -20,6 +23,9 @@ public class Canvas {
         this.image = image;
         this.tags = new ArrayList<>();
 
+        frame = new JFrame();
+        frame.add(mainPanel);
+
         Submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,6 +34,7 @@ public class Canvas {
                     tags.add(label);
                 }
                 scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
+                frame.setVisible(false);
             }
         });
         menu.addActionListener(new ActionListener() {
@@ -55,4 +62,7 @@ public class Canvas {
         return scoreObject;
     }
 
+    public JFrame getFrame() {
+        return this.frame;
+    }
 }
