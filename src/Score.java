@@ -10,6 +10,8 @@ public class Score {
         calculatePercent();
     }
 
+    public Score() { }
+
     private void calculatePercent() {
         this.percent = earned / possible * 100;
     }

@@ -16,7 +16,7 @@ public class CanvasContainer {
 
         this.canvas = new Canvas(image, name, problemNum);
         frame = canvas.getFrame();
-        frame.setName(name);
+        frame.setName(name + ": " + problemNum);
 
         tags = canvas.getTags();
         score = canvas.getScoreObject();

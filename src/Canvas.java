@@ -29,16 +29,24 @@ public class Canvas {
         Submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String[] customTagsCollected = customTags.getText().split(", ");
                 for (String label : customTagsCollected) {
                     tags.add(label);
                 }
+
                 scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
                 frame.setVisible(false);
+
                 for (String tag : tags) {
                     UserInteractiveGrading.tags.get(name).get(problemNum).add(tag);
                 }
                 UserInteractiveGrading.scores.get(name).put(problemNum, scoreObject);
+
+                System.out.println("tags: ");
+                System.out.println(UserInteractiveGrading.tags);
+                System.out.println("scores: ");
+                System.out.println(UserInteractiveGrading.scores);
             }
         });
         menu.addActionListener(new ActionListener() {

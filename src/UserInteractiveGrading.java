@@ -21,8 +21,12 @@ public class UserInteractiveGrading {
 
     public void run() throws InterruptedException, IOException {
 
-        System.out.println();
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
+
+        setup();
+
+        System.out.println(tags);
+        System.out.println(scores);
 
         int newX = 0;
         int newY = 0;
@@ -36,22 +40,20 @@ public class UserInteractiveGrading {
 
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
-                CanvasContainer container = new CanvasContainer(student.getName() + "" + ans.getProblemNum(), image.getRegion(ans), ans.getProblemNum());
+                CanvasContainer container = new CanvasContainer(student.getName(), image.getRegion(ans), ans.getProblemNum());
 
                 if (newX + container.getWidth() > screenWidth) {
                     newX = 0;
-                }
-                if (newX == 0) {
-                    newY += container.getHeight();
-                }
-                if (newY + container.getHeight() > screenHeight) {
-                    newY = 0;
                 }
 
                 container.setLocation(newX, newY);
                 container.display();
 
                 newX += container.getWidth();
+
+                if (newX == 0) {
+                    newY += container.getHeight();
+                }
             }
         }
         Thread.sleep(100000);
@@ -167,6 +169,9 @@ public class UserInteractiveGrading {
     private void setup() {
         for (File student : new File(Constants.StudentResponsePath).listFiles()) {
             tags.put(student.getName(), new HashMap<>());
+            for (int i = 0; i < numOfProblems; i++) {
+                tags.get(student.getName()).put(i + 1, new ArrayList<>());
+            }
             scores.put(student.getName(), new HashMap<>());
         }
     }
