@@ -33,6 +33,7 @@ public class Canvas {
                 String[] customTagsCollected = customTags.getText().split(", ");
                 for (String label : customTagsCollected) {
                     tags.add(label);
+                    if (!UserInteractiveGrading.menuLabels.contains(label)) UserInteractiveGrading.menuLabels.add(label);
                 }
 
                 scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
@@ -42,11 +43,14 @@ public class Canvas {
                     UserInteractiveGrading.tags.get(name).get(problemNum).add(tag);
                 }
                 UserInteractiveGrading.scores.get(name).put(problemNum, scoreObject);
+                UserInteractiveGrading.updateCanvi();
 
-                System.out.println("tags: ");
+                System.out.println("tags (specified): ");
                 System.out.println(UserInteractiveGrading.tags);
                 System.out.println("scores: ");
                 System.out.println(UserInteractiveGrading.scores);
+                System.out.println("all tags: ");
+                System.out.println(UserInteractiveGrading.menuLabels);
             }
         });
         menu.addActionListener(new ActionListener() {
@@ -76,5 +80,16 @@ public class Canvas {
 
     public JFrame getFrame() {
         return this.frame;
+    }
+
+    public void addLabel(String label) {
+        this.menu.addItem(label);
+    }
+
+    public boolean contains(String label) {
+        for (int i = 0; i < menu.getItemCount(); i++) {
+            if (menu.getItemAt(i).equals(label)) return true;
+        }
+        return false;
     }
 }

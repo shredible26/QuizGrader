@@ -7,6 +7,13 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
+    /**
+     * TODO
+     * whenever submit is clicked, update all comboboxes
+     * create list with all canvas containers
+     * when submit button clicked, loop over all canvas continers and update corresponding j
+     */
+
     private final double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -16,6 +23,9 @@ public class UserInteractiveGrading {
     private final int scaleWidth = 500; //scale all images to this width
     private final int scaleHeight = 750; //scale all images to this height
 
+    public static ArrayList<String> menuLabels = new ArrayList<>();
+    public static ArrayList<CanvasContainer> canvi = new ArrayList<>();
+
     public static HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
     public static HashMap<String, HashMap<Integer, Score>> scores = new HashMap<>();
 
@@ -24,9 +34,6 @@ public class UserInteractiveGrading {
         ANSWER_FIELDS = loadAllAnswerFields(); //HashMap mapping page name to list of answer fields on that page
 
         setup();
-
-        System.out.println(tags);
-        System.out.println(scores);
 
         int newX = 0;
         int newY = 0;
@@ -41,6 +48,7 @@ public class UserInteractiveGrading {
                 QGImage image = new QGImage(student.getAbsolutePath() + Constants.separator + page);
                 image.resize(scaleHeight, scaleWidth);
                 CanvasContainer container = new CanvasContainer(student.getName(), image.getRegion(ans), ans.getProblemNum());
+                canvi.add(container);
 
                 if (newX + container.getWidth() > screenWidth) {
                     newX = 0;
@@ -56,7 +64,8 @@ public class UserInteractiveGrading {
                 }
             }
         }
-        Thread.sleep(100000);
+
+        Thread.sleep(10000000);
         System.exit(0);
     }
 
@@ -173,6 +182,16 @@ public class UserInteractiveGrading {
                 tags.get(student.getName()).put(i + 1, new ArrayList<>());
             }
             scores.put(student.getName(), new HashMap<>());
+        }
+    }
+
+    public static void updateCanvi() {
+        for (CanvasContainer container : canvi) {
+            for (String label : menuLabels) {
+                if (!container.contains(label)) {
+                    container.addLabel(label);
+                }
+            }
         }
     }
 }

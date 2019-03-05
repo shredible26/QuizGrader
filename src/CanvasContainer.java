@@ -53,4 +53,13 @@ public class CanvasContainer {
     public int getHeight() {
         return height;
     }
+
+    public void addLabel(String label) {
+        this.canvas.addLabel(label);
+    }
+
+    public boolean contains(String label) {
+        if (canvas.contains(label)) return true;
+        return false;
+    }
 }
