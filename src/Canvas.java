@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Canvas {
     private JComboBox menu;
     private JTextField customTags;
     private JTextField score;
-    private JButton Submit;
+    private JButton submit;
 
     private QGImage image;
     private ArrayList<String> tags;
@@ -26,11 +27,19 @@ public class Canvas {
         frame = new JFrame();
         frame.add(mainPanel);
 
-        Submit.addActionListener(new ActionListener() {
+        menu.setBackground(Color.LIGHT_GRAY);
+        customTags.setBackground(Color.LIGHT_GRAY);
+        score.setBackground(Color.LIGHT_GRAY);
+        submit.setBackground(new Color(147, 163, 188));
+
+        mainPanel.setBackground(Color.DARK_GRAY);
+
+        submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String[] customTagsCollected = customTags.getText().split(", ");
+
                 for (String label : customTagsCollected) {
                     tags.add(label);
                     if (!UserInteractiveGrading.menuLabels.contains(label)) UserInteractiveGrading.menuLabels.add(label);
