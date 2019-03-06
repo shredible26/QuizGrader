@@ -21,6 +21,9 @@ public class Canvas {
     private ArrayList<String> tags;
     private Score scoreObject;
 
+    private boolean canTagsDisappear = true;
+    private boolean canScoreDisappear = true;
+
     public Canvas(QGImage image, String name, int problemNum) {
 
         this.image = image;
@@ -38,8 +41,8 @@ public class Canvas {
         mainPanel.setBackground(Color.DARK_GRAY);
         //----------
 
-//        customTags.setText("Tags");
-//        score.setText("Score/Total");
+        customTags.setText("Tags");
+        score.setText("Score/Total");
 
         submit.addActionListener(new ActionListener() {
             @Override
@@ -78,18 +81,24 @@ public class Canvas {
                 menu.removeItem(menu.getSelectedItem());
             }
         });
-//        customTags.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                customTags.setText("");
-//            }
-//        });
-//        score.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                score.setText("");
-//            }
-//        });
+        customTags.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (canTagsDisappear) {
+                    customTags.setText("");
+                    canTagsDisappear = false;
+                }
+            }
+        });
+        score.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (canScoreDisappear) {
+                    score.setText("");
+                    canScoreDisappear = false;
+                }
+            }
+        });
     }
 
     private void createUIComponents() {
