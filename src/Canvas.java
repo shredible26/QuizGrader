@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class Canvas {
@@ -27,12 +29,17 @@ public class Canvas {
         frame = new JFrame();
         frame.add(mainPanel);
 
+        //Color scheme
         menu.setBackground(Color.LIGHT_GRAY);
         customTags.setBackground(Color.LIGHT_GRAY);
         score.setBackground(Color.LIGHT_GRAY);
-        submit.setBackground(new Color(147, 163, 188));
+        submit.setForeground(Color.BLACK);
 
         mainPanel.setBackground(Color.DARK_GRAY);
+        //----------
+
+        customTags.setText("Tags");
+        score.setText("Score/Total");
 
         submit.addActionListener(new ActionListener() {
             @Override
@@ -65,9 +72,22 @@ public class Canvas {
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (customTags.getText().equals("Tags")) customTags.setText("");
                 if (customTags.getText().equals("")) customTags.setText(menu.getSelectedItem().toString());
                 else customTags.setText(customTags.getText() + ", " + menu.getSelectedItem().toString());
                 menu.removeItem(menu.getSelectedItem());
+            }
+        });
+        customTags.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                customTags.setText("");
+            }
+        });
+        score.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                score.setText("");
             }
         });
     }
