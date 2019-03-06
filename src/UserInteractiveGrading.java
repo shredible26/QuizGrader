@@ -7,13 +7,6 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
-    /**
-     * TODO
-     * whenever submit is clicked, update all comboboxes
-     * create list with all canvas containers
-     * when submit button clicked, loop over all canvas continers and update corresponding j
-     */
-
     private final double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
