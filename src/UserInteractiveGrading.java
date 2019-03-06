@@ -38,6 +38,8 @@ public class UserInteractiveGrading {
         int newX = 0;
         int newY = 0;
 
+        boolean newLine = false;
+
         for (int i = 1; i <= numOfProblems; i++) {
 
             String page = getPageForNum(i);
@@ -52,17 +54,23 @@ public class UserInteractiveGrading {
 
                 if (newX + container.getWidth() > screenWidth) {
                     newX = 0;
+                    newLine = true;
+                }
+
+                if (newLine) {
+                    newY += container.getHeight() + 30;
+                    newLine = false;
                 }
 
                 container.setLocation(newX, newY);
-                container.display();
 
                 newX += container.getWidth();
 
-                if (newX == 0) {
-                    newY += container.getHeight();
-                }
+                container.display();
+
             }
+
+            //end process here, generate summary
         }
 
         Thread.sleep(10000000);

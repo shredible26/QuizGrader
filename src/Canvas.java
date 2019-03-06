@@ -58,6 +58,7 @@ public class Canvas {
             public void actionPerformed(ActionEvent e) {
                 if (customTags.getText().equals("")) customTags.setText(menu.getSelectedItem().toString());
                 else customTags.setText(customTags.getText() + ", " + menu.getSelectedItem().toString());
+                menu.removeItem(menu.getSelectedItem());
             }
         });
     }
