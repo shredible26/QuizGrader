@@ -52,7 +52,7 @@ public class Canvas {
 
                 for (String label : customTagsCollected) {
                     tags.add(label);
-                    if (!UserInteractiveGrading.menuLabels.contains(label)) UserInteractiveGrading.menuLabels.add(label);
+                    if (!UserInteractiveGrading.menuLabels.contains(label.toLowerCase())) UserInteractiveGrading.menuLabels.add(label.toLowerCase());
                 }
 
                 scoreObject = new Score(Double.parseDouble(score.getText().split("/")[0]), Double.parseDouble(score.getText().split("/")[1]));
@@ -64,12 +64,16 @@ public class Canvas {
                 UserInteractiveGrading.scores.get(name).put(problemNum, scoreObject);
                 UserInteractiveGrading.updateCanvi();
 
+                UserInteractiveGrading.submittedProblems++;
+
                 System.out.println("tags (specified): ");
                 System.out.println(UserInteractiveGrading.tags);
                 System.out.println("scores: ");
                 System.out.println(UserInteractiveGrading.scores);
                 System.out.println("all tags: ");
                 System.out.println(UserInteractiveGrading.menuLabels);
+                System.out.println("number of submitted problems: ");
+                System.out.println(UserInteractiveGrading.submittedProblems);
             }
         });
         menu.addActionListener(new ActionListener() {
@@ -84,7 +88,7 @@ public class Canvas {
         customTags.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (canTagsDisappear) {
+                if (canTagsDisappear && customTags.getText().equals("Tags")) {
                     customTags.setText("");
                     canTagsDisappear = false;
                 }
@@ -93,7 +97,7 @@ public class Canvas {
         score.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (canScoreDisappear) {
+                if (canScoreDisappear && score.getText().equals("Score/Total")) {
                     score.setText("");
                     canScoreDisappear = false;
                 }

@@ -23,9 +23,9 @@
         <properties>
           <model>
             <item value=""/>
-            <item value="Off by one"/>
-            <item value="Null pointer"/>
-            <item value="Stackoverflow"/>
+            <item value="off by one"/>
+            <item value="null pointer"/>
+            <item value="stackoverflow"/>
           </model>
         </properties>
       </component>

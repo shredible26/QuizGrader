@@ -7,6 +7,9 @@ import java.util.HashMap;
 
 public class UserInteractiveGrading {
 
+    public static int submittedProblems = 0;
+    private int numOfStudents = new File(Constants.StudentResponsePath).listFiles().length;
+
     private final double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -17,7 +20,10 @@ public class UserInteractiveGrading {
     private final int scaleHeight = 750; //scale all images to this height
 
     public static ArrayList<String> menuLabels = new ArrayList<>();
+
     public static ArrayList<CanvasContainer> canvi = new ArrayList<>();
+    public ArrayList<CanvasContainer> shown = new ArrayList<>();
+    public ArrayList<CanvasContainer> hidden = new ArrayList<>();
 
     public static HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
     public static HashMap<String, HashMap<Integer, Score>> scores = new HashMap<>();
@@ -51,7 +57,7 @@ public class UserInteractiveGrading {
                 }
 
                 if (newLine) {
-                    newY += container.getHeight() + 30;
+                    newY += container.getHeight() + 20;
                     newLine = false;
                 }
 
@@ -60,14 +66,22 @@ public class UserInteractiveGrading {
                 newX += container.getWidth();
 
                 container.display();
-
             }
-
-            //end process here, generate summary
         }
+
+        while ((numOfProblems) * numOfStudents > submittedProblems) System.out.print("");
+
+        Visualizer visualizer = new Visualizer(tags, scores, numOfProblems);
+        visualizer.display();
 
         Thread.sleep(10000000);
         System.exit(0);
+    }
+
+    public void displayValidContainers() {
+        for (CanvasContainer container : shown) {
+            container.display();
+        }
     }
 
     /**
