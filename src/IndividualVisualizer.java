@@ -1,10 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Visualizer {
+public class IndividualVisualizer {
 
     private JFrame frame;
 
@@ -30,13 +31,18 @@ public class Visualizer {
     private boolean numberClicked;
 
 
-    public Visualizer(HashMap<String, HashMap<Integer, ArrayList<String>>> tags, HashMap<String, HashMap<Integer, Score>> scores, int numProblems) {
+    public IndividualVisualizer(HashMap<String, HashMap<Integer, ArrayList<String>>> tags, HashMap<String, HashMap<Integer, Score>> scores, int numProblems) {
 
         frame = new JFrame("Individual Report");
         frame.add(mainPanel);
 
         this.tagsMap = tags;
         this.scoreMap = scores;
+
+        namesTextField.setEditable(false);
+        numberTextField.setEditable(false);
+        tagsTextArea.setEditable(false);
+        scoreTextArea.setEditable(false);
 
         for (String student : tags.keySet()) {
             namesMenu.addItem(student);
@@ -87,6 +93,6 @@ public class Visualizer {
             }
         }
         tagsTextArea.setText(tagText);
-        scoreTextArea.setText(scoreMap.get(student).get(num + 1).toString());
+        scoreTextArea.setText("Score: " + scoreMap.get(student).get(num + 1).toString());
     }
 }
