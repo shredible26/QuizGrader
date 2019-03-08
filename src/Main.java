@@ -2,10 +2,14 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-//        runCollectionsAnalysis();
-        runUserInteractiveGradingSystem();
-    }
+        DataLoader dl = new DataLoader(1);
 
+        dl.loadData("C:\\Users\\Wang\\Desktop\\RES");
+
+        System.out.println("Completed data loading stage");
+//        runCollectionsAnalysis();
+        //runUserInteractiveGradingSystem();
+    }
     /**
      *
      */
