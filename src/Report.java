@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,25 +28,30 @@ public class Report {
             for (int i = 1; i <= numOfProblems; i++) {
                 suggestedEarned += scores.get(student).get(i).getEarned();
                 suggestedTotal += scores.get(student).get(i).getPossible();
-                if (i != numOfProblems) {
-                    writeable += i + ": " + scores.get(student).get(i).toString() + ", ";
-                } else {
-                    writeable += i + ": " + scores.get(student).get(i).toString();
-                }
+                writeable += i + ": " + scores.get(student).get(i).toString();
                 writeable += "\n" + "       ";
             }
             Score score = new Score(suggestedEarned, suggestedTotal);
             writeable += "  total: " + score.toString() + ", " + findGrade(score);
             writeable += "\n";
         }
+
         classData.setBorder(BorderFactory.createCompoundBorder(
                 mainPanel.getBorder(),
                 BorderFactory.createEmptyBorder(5, 15, 15, 15)));
         classData.setText(writeable);
+
+        sendInformationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public void display() {
         frame.add(mainPanel);
+        frame.pack();
         frame.setVisible(true);
     }
 

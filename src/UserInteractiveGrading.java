@@ -22,11 +22,14 @@ public class UserInteractiveGrading {
     public static ArrayList<String> menuLabels = new ArrayList<>();
 
     public static ArrayList<CanvasContainer> canvi = new ArrayList<>();
+
     public ArrayList<CanvasContainer> shown = new ArrayList<>();
     public ArrayList<CanvasContainer> hidden = new ArrayList<>();
 
     public static HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
     public static HashMap<String, HashMap<Integer, Score>> scores = new HashMap<>();
+
+    private int previousLineY = 0;
 
     public void run() throws InterruptedException, IOException {
 
@@ -63,9 +66,17 @@ public class UserInteractiveGrading {
 
                 container.setLocation(newX, newY);
 
-                newX += container.getWidth();
+                if (container.getLocation().getY() + container.getHeight() > screenHeight) {
+                    hidden.add(container);
+                } else {
+                    shown.add(container);
+                }
 
-                container.display();
+                for (CanvasContainer containerToShow : shown) {
+                    containerToShow.display();
+                }
+
+                newX += container.getWidth();
             }
         }
 

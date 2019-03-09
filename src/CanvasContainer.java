@@ -12,7 +12,13 @@ public class CanvasContainer {
     private int width;
     private int height;
 
+    private int problemNum;
+    private String name;
+
     public CanvasContainer(String name, QGImage image, int problemNum) {
+
+        this.problemNum = problemNum;
+        this.name = name;
 
         this.canvas = new Canvas(image, name, problemNum);
         frame = canvas.getFrame();
@@ -61,5 +67,13 @@ public class CanvasContainer {
     public boolean contains(String label) {
         if (canvas.contains(label)) return true;
         return false;
+    }
+
+    public Point getLocation() {
+        return frame.getLocation();
+    }
+
+    public String toString() {
+        return problemNum + name;
     }
 }
