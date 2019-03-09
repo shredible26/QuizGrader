@@ -72,7 +72,10 @@ public class UserInteractiveGrading {
         while ((numOfProblems) * numOfStudents > submittedProblems) System.out.print("");
 
         IndividualVisualizer individualVisualizer = new IndividualVisualizer(tags, scores, numOfProblems);
+        Report classReport = new Report(scores, numOfProblems);
+
         individualVisualizer.display();
+        classReport.display();
 
         Thread.sleep(10000000);
         System.exit(0);

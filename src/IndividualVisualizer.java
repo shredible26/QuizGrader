@@ -33,8 +33,10 @@ public class IndividualVisualizer {
 
     public IndividualVisualizer(HashMap<String, HashMap<Integer, ArrayList<String>>> tags, HashMap<String, HashMap<Integer, Score>> scores, int numProblems) {
 
-        frame = new JFrame("Individual Report");
+        frame = new JFrame("Individual Reports");
         frame.add(mainPanel);
+
+        frame.setPreferredSize(new Dimension(300, 200));
 
         this.tagsMap = tags;
         this.scoreMap = scores;
