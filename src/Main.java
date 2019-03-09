@@ -26,8 +26,5 @@ public class Main {
         } catch (IOException e) {
             System.err.println("Unhandled IOException!");
         }
-
-//        EasyImage easyImage = new EasyImage("blankTest.jpg");
-//        easyImage.display(easyImage.scaleImage(400, 500)); //random numbers to test
     }
 }

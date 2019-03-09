@@ -116,7 +116,7 @@ public class UserInteractiveGrading {
             pageImage.close();
         }
 
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
         numOfProblems = num;
         return answers;
     }

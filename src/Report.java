@@ -22,19 +22,24 @@ public class Report {
             int suggestedTotal = 0;
             int suggestedEarned = 0;
             writeable += student + ": ";
+            writeable += "\n" + "       ";
             for (int i = 1; i <= numOfProblems; i++) {
                 suggestedEarned += scores.get(student).get(i).getEarned();
                 suggestedTotal += scores.get(student).get(i).getPossible();
                 if (i != numOfProblems) {
-                    writeable += i + "=[ " + scores.get(student).get(i).toString() + " ], ";
+                    writeable += i + ": " + scores.get(student).get(i).toString() + ", ";
                 } else {
-                    writeable += i + "=[ " + scores.get(student).get(i).toString() + " ] ";
+                    writeable += i + ": " + scores.get(student).get(i).toString();
                 }
+                writeable += "\n" + "       ";
             }
             Score score = new Score(suggestedEarned, suggestedTotal);
             writeable += "  total: " + score.toString() + ", " + findGrade(score);
             writeable += "\n";
         }
+        classData.setBorder(BorderFactory.createCompoundBorder(
+                mainPanel.getBorder(),
+                BorderFactory.createEmptyBorder(5, 15, 15, 15)));
         classData.setText(writeable);
     }
 
