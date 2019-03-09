@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80c0d729-4640-4f82-a1db-130756e11514" name="Default Changelist" comment="">
+    <list default="true" id="80c0d729-4640-4f82-a1db-130756e11514" name="Default Changelist" comment="added the display restrictions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CanvasContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CanvasContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/QuizGrader/UserInteractiveGrading.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/QuizGrader/UserInteractiveGrading.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserInteractiveGrading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteractiveGrading.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,14 +55,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="33" />
-          <entry key="java" value="28462" />
-          <entry key="txt" value="1354" />
+          <entry key="java" value="28479" />
+          <entry key="txt" value="1393" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="28462" />
-          <entry key="PLAIN_TEXT" value="1387" />
+          <entry key="JAVA" value="28479" />
+          <entry key="PLAIN_TEXT" value="1426" />
         </counts>
       </usages-collector>
     </session>
@@ -79,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UserInteractiveGrading.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="356">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Report.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="315">
               <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -118,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="371">
+              <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -272,7 +271,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="190" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552172269755" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552174082858" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -381,7 +380,7 @@
       <workItem from="1552073341485" duration="410000" />
       <workItem from="1552096202511" duration="2072000" />
       <workItem from="1552102468597" duration="2562000" />
-      <workItem from="1552170887974" duration="1978000" />
+      <workItem from="1552170887974" duration="2088000" />
     </task>
     <task id="LOCAL-00001" summary="added draw rectangle">
       <created>1550540242831</created>
@@ -607,17 +606,24 @@
       <option name="project" value="LOCAL" />
       <updated>1552108488978</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added the display restrictions">
+      <created>1552173995500</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1552173995500</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128093000" />
+    <option name="totallyTimeSpent" value="128203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24606581" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24606581" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -626,7 +632,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299595" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.25371286" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.25371286" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975247" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -690,7 +696,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="polished UI" />
     <MESSAGE value="Added multi problem interface" />
     <MESSAGE value="Created Canvas object to deal with 2nd part of UI" />
     <MESSAGE value="added textField to canvas object" />
@@ -715,7 +720,8 @@
     <MESSAGE value="fixed editing problem" />
     <MESSAGE value="fixed grade assignment" />
     <MESSAGE value="added margins to class data visualizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added margins to class data visualizer" />
+    <MESSAGE value="added the display restrictions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the display restrictions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/ScannedImageSources/StudentResponses/student1/testImg2.jpg">
@@ -855,16 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Report.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -879,16 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserInteractiveGrading.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -907,8 +893,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Canvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="371">
+          <caret line="76" column="13" lean-forward="true" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Report.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserInteractiveGrading.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

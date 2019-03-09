@@ -23,9 +23,6 @@ public class UserInteractiveGrading {
 
     public static ArrayList<CanvasContainer> canvi = new ArrayList<>();
 
-    public ArrayList<CanvasContainer> shown = new ArrayList<>();
-    public ArrayList<CanvasContainer> hidden = new ArrayList<>();
-
     public static HashMap<String, HashMap<Integer, ArrayList<String>>> tags = new HashMap<>();
     public static HashMap<String, HashMap<Integer, Score>> scores = new HashMap<>();
 
@@ -65,18 +62,9 @@ public class UserInteractiveGrading {
                 }
 
                 container.setLocation(newX, newY);
-
-                if (container.getLocation().getY() + container.getHeight() > screenHeight) {
-                    hidden.add(container);
-                } else {
-                    shown.add(container);
-                }
-
-                for (CanvasContainer containerToShow : shown) {
-                    containerToShow.display();
-                }
-
                 newX += container.getWidth();
+
+                container.display();
             }
         }
 
@@ -90,12 +78,6 @@ public class UserInteractiveGrading {
 
         Thread.sleep(10000000);
         System.exit(0);
-    }
-
-    public void displayValidContainers() {
-        for (CanvasContainer container : shown) {
-            container.display();
-        }
     }
 
     /**
