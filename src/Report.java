@@ -7,17 +7,36 @@ import java.util.HashMap;
 
 public class Report {
 
-    JFrame frame;
+    private JFrame frame;
 
     private JPanel mainPanel;
     private JTextField title;
     private JTextArea classData;
     private JButton sendInformationButton;
 
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JTextField getTitle() {
+        return title;
+    }
+
+    public JTextArea getClassData() {
+        return classData;
+    }
+
+    public JButton getSendInformationButton() {
+        return sendInformationButton;
+    }
+
     public Report(HashMap<String, HashMap<Integer, Score>> scores, int numOfProblems) {
 
         frame = new JFrame("Class Report");
-        frame.setPreferredSize(new Dimension(800, 700));
 
         String writeable = "";
         for (String student : scores.keySet()) {
@@ -41,10 +60,11 @@ public class Report {
                 BorderFactory.createEmptyBorder(5, 15, 15, 15)));
         classData.setText(writeable);
 
+
         sendInformationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //TODO Update this code
             }
         });
     }
@@ -66,5 +86,4 @@ public class Report {
         }
         return 'F';
     }
-
 }
